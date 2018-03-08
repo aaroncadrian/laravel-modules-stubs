@@ -17,5 +17,12 @@
         "psr-4": {
             "AaronAdrian\\LaravelModulesStubs\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AaronAdrian\\LaravelModulesStubs\\LaravelModulesStubsServiceProvider"
+            ]
+        }
     }
 }
