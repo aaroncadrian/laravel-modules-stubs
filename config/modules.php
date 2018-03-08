@@ -24,7 +24,7 @@ return [
 
     'stubs' => [
         'enabled' => true,
-        'path' => resource_path().'/vendor/laravel-modules/stubs',
+        'path' => resource_path('stubs/laravel-modules'),
         'files' => [
             'routes' => 'Http/routes.php',
             'views/index' => 'Resources/views/index.blade.php',
