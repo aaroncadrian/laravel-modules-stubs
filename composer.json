@@ -1,7 +1,7 @@
 {
     "name": "aaroncadrian/laravel-modules-stubs",
     "description": "Customized stubs to work with laravel-modules",
-    "type": "metapackage",
+    "type": "library",
     "require": {
         "illuminate/support": ">=5.5",
         "nwidart/laravel-modules": ">=2.0"
