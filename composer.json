@@ -1,0 +1,16 @@
+{
+    "name": "aaroncadrian/laravel-modules-stubs",
+    "description": "Customized stubs to work with laravel-modules",
+    "type": "metapackage",
+    "require": {
+        "illuminate/support": "^5.6",
+        "nwidart/laravel-modules": "^3.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aaron Adrian",
+            "email": "aaroncadrian@gmail.com"
+        }
+    ]
+}

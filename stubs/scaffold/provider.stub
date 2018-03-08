@@ -1,0 +1,140 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Factory;
+
+class $CLASS$ extends ServiceProvider
+{
+    /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer = false;
+
+    /**
+     * Boot the application events.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->bootRoutes();
+        $this->registerViews();
+        $this->registerFactories();
+        $this->bootMigrations();
+    }
+
+    /**
+     * Load all migrations in the module.
+     *
+     * @return void
+     */
+    public function bootMigrations()
+    {
+        $this->loadMigrationsFrom(__DIR__ . '/../$MIGRATIONS_PATH$');
+    }
+
+    /**
+     * Load all routes in the module.
+     *
+     * @return void
+     */
+    public function bootRoutes()
+    {
+        $this->loadRoutesFrom(__DIR__.'/../Http/routes.php');
+    }
+
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->registerConfig();
+    }
+
+    /**
+     * Register the different views that publish.
+     *
+     * @return void
+     */
+    protected function registerPublishes()
+    {
+        $this->publishConfig();
+    }
+
+    /**
+     * Register config.
+     *
+     * @return void
+     */
+    protected function registerConfig()
+    {
+        $this->mergeConfigFrom(
+            __DIR__.'/../$PATH_CONFIG$/config.php', '$LOWER_NAME$'
+        );
+    }
+
+    /**
+     * Publish the config file.
+     *
+     * @return void
+     */
+    protected function publishConfig()
+    {
+        $this->publishes([
+            __DIR__.'/../$PATH_CONFIG$/config.php' => config_path('$LOWER_NAME$.php'),
+        ], 'config');
+    }
+
+    /**
+     * Register views.
+     *
+     * @return void
+     */
+    public function registerViews()
+    {
+        $this->loadViewsFrom(__DIR__.'/../Resources/views', '$LOWER_NAME$');
+    }
+
+    /**
+     * Register translations.
+     *
+     * @return void
+     */
+    public function registerTranslations()
+    {
+        $langPath = resource_path('lang/modules/$LOWER_NAME$');
+
+        if (is_dir($langPath)) {
+            $this->loadTranslationsFrom($langPath, '$LOWER_NAME$');
+        } else {
+            $this->loadTranslationsFrom(__DIR__ .'/../$PATH_LANG$', '$LOWER_NAME$');
+        }
+    }
+
+    /**
+     * Register an additional directory of factories.
+     * @source https://github.com/sebastiaanluca/laravel-resource-flow/blob/develop/src/Modules/ModuleServiceProvider.php#L66
+     */
+    public function registerFactories()
+    {
+        if (! app()->environment('production')) {
+            app(Factory::class)->load(__DIR__ . '/../$FACTORIES_PATH$');
+        }
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [];
+    }
+}
