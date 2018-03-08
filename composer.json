@@ -15,7 +15,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "AaronAdrian\\LaravelModulesStubs\\": "src"
+            "AaronAdrian\\LaravelModulesStubs\\": "src/"
         }
     },
     "extra": {
