@@ -1,13 +1,9 @@
 <?php
 
-Route::group([
-    'middleware' => [
-        'web',
-    ],
-    'prefix' => '$LOWER_NAME$',
-    'namespace' => '$MODULE_NAMESPACE$\$STUDLY_NAME$\Http\Controllers'
-], function() {
-
-    Route::get('/', '$STUDLY_NAME$Controller@index');
-
-});
+Route::middleware(['web',])
+    ->namespace('$MODULE_NAMESPACE$\$STUDLY_NAME$\Http\Controllers')
+    ->as('$LOWER_NAME$::')
+    ->prefix('$LOWER_NAME$')
+    ->group(function() {
+        Route::get('/', '$STUDLY_NAME$Controller@index')->name('index');
+    });
