@@ -23,7 +23,7 @@ class $CLASS$ implements Rule
      * @param  mixed  $value
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes($attribute, $value, $parameters, $validator)
     {
         //
     }
@@ -35,6 +35,6 @@ class $CLASS$ implements Rule
      */
     public function message()
     {
-        return 'The validation error message.';
+        return 'The :attribute will have this validation error message.';
     }
 }
