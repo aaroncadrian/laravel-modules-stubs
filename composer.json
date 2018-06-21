@@ -3,7 +3,8 @@
     "description": "Customized stubs to work with laravel-modules",
     "type": "library",
     "require": {
-        "illuminate/support": ">=5.5",
+        "php": ">=5.5",
+        "illuminate/support": ">=5.0",
         "nwidart/laravel-modules": ">=2.0"
     },
     "license": "MIT",
